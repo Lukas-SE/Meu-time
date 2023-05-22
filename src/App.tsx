@@ -1,9 +1,13 @@
-import KeyForm from "./components/keyForm/KeyForm";
+
+import { AuthProvider } from "./contexts/auth";
+import TeamRoutes from "./routes";
 
 function App() {
-  return(
-    <KeyForm />
-  )
+  return (
+    <AuthProvider>
+      <TeamRoutes />
+    </AuthProvider>
+  );
 }
 
 export default App;

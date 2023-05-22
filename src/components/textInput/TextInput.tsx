@@ -1,10 +1,12 @@
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 interface ITextInput {
   name: string;
   placeholder: string;
+  register: UseFormRegister<FieldValues>;
 }
 
-export default function TextInput({ name, placeholder}: ITextInput) {
+export default function TextInput({ name, placeholder, register }: ITextInput) {
   return (
     <div className="flex font-spaceMono text-base font-normal flex-1">
       <input
@@ -14,6 +16,7 @@ export default function TextInput({ name, placeholder}: ITextInput) {
         placeholder={placeholder}
         autoComplete="off"
         spellCheck="false"
+        {...register(name)}
       />
     </div>
   );
