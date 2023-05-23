@@ -10,7 +10,7 @@ import auth from "../services/auth";
 interface IAuthContextData {
   signed: boolean;
   user: object | null;
-  login(key: string): Promise<void>;
+  login(key: string, manterLogin?: boolean): Promise<void>;
   logout(): void;
 }
 
@@ -28,18 +28,18 @@ export function AuthProvider({ children }: IAuthProvider) {
       const storagedKey = await localStorage.getItem("APIkey");
       if (storagedKey) {
         login(storagedKey);
-      } else {
       }
     }
     loadStoragedKey();
     
   }, []);
 
-  async function login(key: string) {
+  async function login(key: string, manterLogin?: boolean) {
     try {
       const { response } = await auth(key);
       setUser({ ...response });
-      localStorage.setItem("APIkey", key);
+      
+      manterLogin && localStorage.setItem("APIkey", key);
     } catch (error) {
       logout();
       let err = error;

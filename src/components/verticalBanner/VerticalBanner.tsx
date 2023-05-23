@@ -1,5 +1,5 @@
 export default function VerticalBanner() {
   return (
-    <div className="h-full w-[60vw] bg-black shrink-0 hidden md:inline"></div>
+    <div className="h-screen w-[60vw] bg-black hidden md:inline"></div>
   )
 }

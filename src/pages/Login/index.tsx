@@ -8,16 +8,16 @@ export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState(false);
 
-  function handleKey(key: string) {
-    login(key).catch(() => setError(true));
+  function handleKey(key: string, manterLogin: boolean) {
+    login(key, manterLogin).catch(() => setError(true));
   }
   return (
     <>
-      <div className="flex justify-center md:justify-between h-screen w-screen bg-light-400">
+      <div className="flex justify-center overflow-hidden md:justify-between h-screen w-screen bg-light-400">
         <div className="w-max md:pl-20 px-12">
           <div className="flex h-full justify-between flex-col">
-            <div>
-              <div className="py-[4.25rem]">
+            <div className="pt-[4.25rem]">
+              <div className="narrow:pb-0 pb-[4.25rem]">
                 <Logo />
               </div>
               <div className="pt-20 pb-5">

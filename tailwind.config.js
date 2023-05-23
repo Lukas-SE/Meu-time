@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "narrow": {"raw": "(max-height: 600px)"},
+      },
       colors: {
         light: {
           400: "#F2F2F2",

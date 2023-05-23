@@ -5,17 +5,17 @@ import Tooltip from "../tooltip/Tooltip";
 import { useForm } from "react-hook-form";
 
 interface IForm {
-  handler(key: string): void
+  handler(key: string, manterLogin: boolean): void
 }
 
 export default function KeyForm({handler}: IForm) {
   const { register, handleSubmit } = useForm();
   return (
     <>
-      <div className="flex justify-start w-[30.5rem]">
+      <div className="flex justify-start basis-[30.5rem] md:w-[30.5rem]">
         <form
           className="w-full flex space-between space-x-2"
-          onSubmit={handleSubmit((data) => handler(data.key))}
+          onSubmit={handleSubmit((data) => handler(data.key, data.manterLogin))}
         >
           <div className="flex-1">
             <TextInput
