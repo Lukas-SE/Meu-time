@@ -1,55 +1,52 @@
 import { FieldValues, useForm } from "react-hook-form";
 import SelectInput from "../selectInput/SelectInput";
 import ButtonText from "../ButtonText/ButtonText";
+import { useTeam } from "../../services/meu-time";
 
 interface ITeamForm {
   handler(data: FieldValues): void;
 }
 
 export default function TeamForm({ handler }: ITeamForm) {
-  const { register, handleSubmit, watch } = useForm();  
+  const { register, handleSubmit, watch } = useForm();
+  const { getCountries, getSeasons, getLeagues, getTeams } = useTeam();
+  let countryWatcher = watch("País");
+  let seasonWatcher = watch("Temporada");
+  let leagueWatcher = watch("Liga");
 
   return (
     <form onSubmit={handleSubmit((data) => handler(data))}>
       <SelectInput
-        name="teste1"
-        placeholder="um teste1"
+        name="País"
+        placeholder="um país"
         register={register}
-        data={[
-          ["tst1", "test1"],
-          ["cs1", "case1"],
-        ]}
+        data={getCountries}
       />
       <SelectInput
-        name="teste2"
-        placeholder="um teste2"
+        name="Temporada"
+        placeholder="uma temporada"
         register={register}
-        data={[
-          ["tst2", "test2"],
-          ["cs2", "case2"],
-        ]}
+        data={getSeasons}
       />
       <SelectInput
-        name="teste3"
-        placeholder="um teste3"
+        name="Liga"
+        placeholder="uma liga"
         register={register}
-        watcher={watch(["teste1", "teste2"])}
-        data={[
-          ["tst3", "test3"],
-          ["cs3", "case3"],
-        ]}
+        disable={[countryWatcher, seasonWatcher].some((i)=> i == "" || i == undefined)}
+        dependencies={[countryWatcher, seasonWatcher]}
+        data={():Promise<string[][]> => {return getLeagues({country: countryWatcher, season: seasonWatcher})}}
       />
       <SelectInput
-        name="teste4"
-        placeholder="um teste4"
+        name="Time"
+        placeholder="um time"
+        disable={[leagueWatcher].some((i)=> i == "" || i == undefined)}
         register={register}
-        watcher={watch(["teste3"])}
-        data={[
-          ["tst4", "test4"],
-          ["cs4", "case4"],
-        ]}
+        dependencies={[leagueWatcher, seasonWatcher]}
+        data={():Promise<string[][]> => {return getTeams({league: leagueWatcher, season: seasonWatcher})}}
       />
-      <ButtonText watcher={watch(["teste4"])} className="w-full mt-10">Salvar</ButtonText>
+      <ButtonText watcher={watch(["Time"])} className="w-full mt-10">
+        Salvar
+      </ButtonText>
     </form>
   );
 }

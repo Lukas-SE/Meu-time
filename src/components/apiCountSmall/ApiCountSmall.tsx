@@ -1,6 +1,36 @@
+import { useEffect, useState } from "react";
 import Logo from "../logo/Logo";
+import { useAuth } from "../../contexts/auth";
 
 export default function ApiCountSmall() {
+  const [percentage, setPercentage] = useState<IUses>({
+    requests: { current: 0, limit_day: 0 },
+  });
+  const { login, logout } = useAuth();
+
+  interface IUses {
+    requests: {
+      current: number;
+      limit_day: number;
+    };
+  }
+
+  useEffect(() => {
+    async function uses() {
+      try {
+        const key = await localStorage.getItem("APIkey");
+        const uses = await login(key as string);
+        setPercentage(uses as IUses);
+
+      } catch (error) {
+        console.log(error);
+        
+        logout();
+      }
+    }
+    uses();
+  }, []);
+
   return (
     <div className="h-[3.125rem] flex mb-5 items-center">
       <Logo />
@@ -14,10 +44,14 @@ export default function ApiCountSmall() {
           </div>
         </div>
         <div className="mb-1">
-          <div className=" bg-dark-700 rounded-full">
-            <div className="w-1/4 h-2 bg-light-600 rounded-full"></div>
+          <div className=" bg-dark-700 rounded-full w-full">
+            <div className={"h-2 bg-light-600 rounded-full w-[25%]"}></div>
           </div>
-          <p className="text-xs pt-1 text-light-600">25 <span className="text-dark-700">DE</span> 100</p>
+          <p className="text-xs pt-1 text-light-600">
+            {`${percentage?.requests.current} `}
+            <span className="text-dark-700">DE</span>
+            {` ${percentage?.requests.limit_day}`}
+          </p>
         </div>
       </div>
     </div>

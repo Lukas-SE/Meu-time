@@ -44,7 +44,12 @@ export default function Login() {
               </div>
             </div>
             <div className="pb-20 font-space text-light-700 cursor-default">
-              <p>Não possúi uma API key? <span className="cursor-pointer font-bold underline">Saiba como</span></p>
+              <p>
+                Não possúi uma API key?{" "}
+                <span className="cursor-pointer font-bold underline">
+                  Saiba como
+                </span>
+              </p>
             </div>
           </div>
         </div>
