@@ -1,13 +1,15 @@
 import { FieldValues } from "react-hook-form";
 import TeamForm from "../../components/teamForm/TeamForm";
 import ApiCountSmall from "../../components/apiCountSmall/ApiCountSmall";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 
 export default function Team() {
-  const autoredirect = useNavigate();
-  function handleTeam(team: FieldValues) {
+  const { login } = useAuth();
+
+  async function handleTeam(team: FieldValues) {
     localStorage.setItem("myTeam", JSON.stringify(team));
-    autoredirect("/");
+    const key = localStorage.getItem("APIkey");
+    login(key as string, team);
   }
 
   return (

@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import Logo from "../logo/Logo";
 import { useAuth } from "../../contexts/auth";
 
+interface IUses {
+  requests: {
+    current: number;
+    limit_day: number;
+  };
+}
+
 export default function ApiCountSmall() {
   const [percentage, setPercentage] = useState<IUses>({
     requests: { current: 0, limit_day: 0 },
   });
   const { login, logout } = useAuth();
-
-  interface IUses {
-    requests: {
-      current: number;
-      limit_day: number;
-    };
-  }
 
   useEffect(() => {
     async function uses() {
@@ -45,7 +45,7 @@ export default function ApiCountSmall() {
         </div>
         <div className="mb-1">
           <div className=" bg-dark-700 rounded-full w-full">
-            <div className={"h-2 bg-light-600 rounded-full w-[25%]"}></div>
+            <div style={{width: (((percentage.requests.current / percentage.requests.limit_day) * 100) + "%")}} className={"h-2 bg-light-600 rounded-full"}></div>
           </div>
           <p className="text-xs pt-1 text-light-600">
             {`${percentage?.requests.current} `}

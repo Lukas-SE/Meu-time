@@ -8,8 +8,8 @@ export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState(false);
 
-  function handleKey(key: string, manterLogin: boolean) {
-    login(key, manterLogin).catch(() => setError(true));
+  function handleKey(key: string) {
+    login(key).catch(() => setError(true));
   }
   return (
     <>

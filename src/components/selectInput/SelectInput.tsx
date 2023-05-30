@@ -23,8 +23,6 @@ const [dataMap, setDataMap] = useState<string[][]>();
 
 useEffect(() => {
   (disable == false) &&  data().then(res => {setDataMap(res)});
-  console.log(`${name} : ${disable}`);
-  console.log(dataMap);
 }, [disable, dependencies ])
 
 

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 interface IAuthContextData {
   signed: boolean;
   user: object | null;
-  login(key: string, manterLogin?: boolean): Promise<object | null>;
+  login(key: string, team?: object): Promise<object | null>;
   logout(): void;
 }
 
@@ -30,24 +30,24 @@ export function AuthProvider({ children }: IAuthProvider) {
       const storagedKey = await localStorage.getItem("APIkey");
       if (storagedKey) {
         const myTeam = await localStorage.getItem("myTeam");
-        if (myTeam) {
-          login(storagedKey, JSON.parse(myTeam as string));
-        } else {
-          login(storagedKey);
-          autoredirect("/team");
-        }
+        login(storagedKey, myTeam ? JSON.parse(myTeam as string) : null);
       }
     }
     loadStoragedKey();
   }, []);
 
-  async function login(key: string, manterLogin?: boolean, time?: object) {
+  async function login(key: string, time?: object) {
     try {
       const { response } = await auth(key);
       setUser({ ...response, team: time ?? {} });
 
-      manterLogin && localStorage.setItem("APIkey", key);
-
+      localStorage.setItem("APIkey", key);
+      
+      if(time) {
+        autoredirect("/");
+      } else {
+        autoredirect("/team");
+      }
       return user;
     } catch (error) {
       logout();
@@ -56,7 +56,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     }
   }
 
-  function logout() {
+  function logout() {    
     localStorage.clear();
     setUser(null);
   }
