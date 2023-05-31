@@ -44,9 +44,9 @@ export function AuthProvider({ children }: IAuthProvider) {
       localStorage.setItem("APIkey", key);
       
       if(time) {
-        autoredirect("/");
+        autoredirect("/", { replace: true });
       } else {
-        autoredirect("/team");
+        autoredirect("/team", { replace: true });
       }
       return user;
     } catch (error) {

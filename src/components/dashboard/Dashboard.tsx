@@ -47,7 +47,9 @@ export default function Dashboard() {
       console.log(statistics);
       setDashboardData(statistics);
     }
-    init();
+    if(localStorage.getItem("myTeam")) {
+      init();
+    } 
   }, []);
 
   return (
