@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PlayerCard from "../playerCard/PlayerCard";
+import PlayerCard from "../playerCard";
 
 interface IPLayers {
   data(): Promise<string[][]>;
@@ -22,7 +22,7 @@ export default function PlayerScroller({ data }: IPLayers) {
         JOGADORES
       </div>
       <div className="space-y-3 w-full max-h-full overflow-y-scroll pt-3">
-        {players?.map((i) => {
+        {players?.length != 0 && players != undefined ? players?.map((i) => {
           return (
             <PlayerCard
               key={i[0]}
@@ -32,7 +32,7 @@ export default function PlayerScroller({ data }: IPLayers) {
               photo={i[3]}
             ></PlayerCard>
           );
-        })}
+        }) : <PlayerCard name="404 NOT FOUND" age="?" nationality="NO PLAYERS FOUND"></PlayerCard>}
       </div>
     </div>
   );

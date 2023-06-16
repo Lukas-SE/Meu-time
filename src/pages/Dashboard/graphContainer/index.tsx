@@ -1,4 +1,4 @@
-import ApiCountLarge from "../apiCountLarge/ApiCountLarge";
+import ApiCountLarge from "../../../components/apiCountLarge";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,

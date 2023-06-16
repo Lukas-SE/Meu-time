@@ -1,7 +1,7 @@
-import ButtonText from "../ButtonText/ButtonText";
-import Checkbox from "../checkbox/Checkbox";
-import TextInput from "../textInput/TextInput";
-import Tooltip from "../tooltip/Tooltip";
+import ButtonText from "../ButtonText";
+import Checkbox from "../checkbox";
+import TextInput from "../textInput";
+import Tooltip from "../tooltip";
 import { useForm } from "react-hook-form";
 
 interface IForm {

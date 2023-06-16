@@ -1,6 +1,6 @@
 import { FieldValues } from "react-hook-form";
-import TeamForm from "../../components/teamForm/TeamForm";
-import ApiCountSmall from "../../components/apiCountSmall/ApiCountSmall";
+import TeamForm from "./teamForm";
+import ApiCountSmall from "../../components/apiCountSmall";
 import { useAuth } from "../../contexts/auth";
 
 export default function Team() {

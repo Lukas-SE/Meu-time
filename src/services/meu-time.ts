@@ -88,7 +88,7 @@ export function useTeam() {
       })
       .catch((err) => {
         console.log(err);
-        return [["erro"]];
+        return [["erro1"]];
       });
     return response;
   }
@@ -105,7 +105,7 @@ export function useTeam() {
       })
       .catch((err) => {
         console.log(err);
-        return [["erro"]];
+        return [["erro2"]];
       });
     return response;
   }
@@ -122,7 +122,7 @@ export function useTeam() {
       })
       .catch((err) => {
         console.log(err);
-        return [["erro"]];
+        return [["erro3"]];
       });
     return response;
   }
@@ -154,17 +154,17 @@ export function useTeam() {
             : i[0] == "goals"
             ? Object.entries(i[1].for.minute)
             : i[0] == "lineups"
-            ? i[1].reduce(
+            ? i[1].length > 0 ? i[1].reduce(
                 (highest: { played: number }, i: { played: number }) => {
                   return highest.played > i.played ? highest : i;
                 }
-              ).formation
+              ).formation : 404
             : i[1];
         })
       )
       .catch((err) => {
         console.log(err);
-        return [["erro"]];
+        return [["erro4"]];
       });
     return response;
   }

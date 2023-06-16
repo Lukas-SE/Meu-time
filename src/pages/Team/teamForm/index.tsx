@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
-import SelectInput from "../selectInput/SelectInput";
-import ButtonText from "../ButtonText/ButtonText";
-import { useTeam } from "../../services/meu-time";
+import SelectInput from "../../../components/selectInput";
+import ButtonText from "../../../components/ButtonText";
+import { useTeam } from "../../../services/meu-time";
 
 interface ITeamForm {
   handler(data: FieldValues): void;

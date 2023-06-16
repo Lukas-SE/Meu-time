@@ -1,6 +1,6 @@
-import ButtonText from "../../components/ButtonText/ButtonText";
-import Dashboard from "../../components/dashboard/Dashboard";
-import Logo from "../../components/logo/Logo";
+import ButtonText from "../../components/ButtonText";
+import Dashboard from "./dashboard";
+import Logo from "../../components/logo";
 import { useAuth } from "../../contexts/auth";
 
 export default function index() {

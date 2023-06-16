@@ -1,34 +1,73 @@
-# Meu time
-> Status: On production :nerd_face:
+<p align="center">
+  <img src="https://i.imgur.com/oWZadY7.png">
+</p>
+<h1 align="center">
+  MyTeam
+</h1>
 
-[PROJECT PROTOTYPE](https://www.figma.com/file/LjRNyD8ZrlZjwaE7oJB0GO/Meu-time?type=design&node-id=0%3A1&t=N6xQGK28YKk6jTe4-1) - CHECK THE FIGMA PROJECT DESIGN
+MyTeam is a visual dashboard of your football team's stats in a specified season. My Team <ins><b>uses an APISports key</b></ins> to update data in real time, you can get one by navigating to the "my access" tab on your profile after creating an APISports account here: <ins><b>[GET API KEY](https://dashboard.api-football.com/login)</b></ins>.  
+APISports allows free users to use the key 100 times per day, that's more than enough, but you can always upgrade the service if you want to.
 
-## description :soccer:
+<p align="center"><b>🚧 MyTeam is under development 🚧</b></p>
+<br/>
 
-"Meu Time" is a valuable tool designed for football enthusiasts, providing users with the ability to access their favorite team's data and information using an [API sports key](https://dashboard.api-football.com/login). With it, users can effortlessly explore and visualize various aspects of their beloved team, enhancing their overall football experience..
+<h2 align="center">
+  About
+</h2>
 
-## project information
+### Features & Info
+⚛️ Developed using **React.js** and **TypeScript**.  
+#️⃣ **Key authentication** and validation.  
+#️⃣ **Responsive design** for every mobile or desktop device.  
+(The data chart is rendered in a canvas, so when testing, it requires refreshing for its responsive layout to be displayed correctly.)  
+✅ **Real-time** data fetching and revalidation.  
+✅ **Chart data visualization** of your team's **average goals per minute** in a game.  
+✅ **Display** your team's **season** games, wins, losses, draws, most used formation, and each player's information.  
+✅ **Track** your API key daily limit uses.  
+(APISports might not update this information in real time).  
 
-- Key authentication and validation.
-- Data fetching and revalidation.
-- Chart data visualization.
-- Api key daily limit uses tracking
-  - API SPORTS might not update this information in Real-time.
-- Developed using React.js and typescript.
+### Known issues being solved
+🟥 APISports allows for 100 uses per day and 10 uses per minute. Suppose a user selects a team, navigates to the dashboard, and quickly switches to another team. In such cases, the team form may appear with empty fields (while still being marked as invalid) or information might be missing in the dashboard, due to the 10 uses per minute limitation. Unfortunately, this restriction cannot be modified for free accounts, and currently, there is no feedback message notifying the user when this error occurs in the team selection page. This issue does not affect the functionality or usability of the app and normally won't happen, but it does require the user to re-select the team or just wait a minute if so.  
 
-## execution process
+### Features in the next update
+🧰 10 uses per minute problem fixing.  
+🔄 lazy loading for better experience.  
+🚧 PWA and notifications.  
+🚧 Future games callendar for your team.  
+🚧 Multi-language support.  
 
-To begin, open a terminal in the desired location where you wish to save the repository. Then, simply enter the commands:
+<h2 align="center">
+  Interface
+</h2>
+
+✨ You can find the UI design by clicking <ins><b>[HERE](https://www.figma.com/file/LjRNyD8ZrlZjwaE7oJB0GO/Meu-time?type=design&node-id=0%3A1&t=4B7bRXV7ZV1f5NbX-1)</b></ins>
+### Screenshots
+<p align="center">
+  <img src="https://i.imgur.com/VSfoMOg.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/a1tlQoB.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/VuEbmyd.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/y8AKYM4.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/KmbQD49.png">
+</p>
+
+## Building
+
+Remember to create an APISports account and copy your API key to use the app.  
+You need [Node.js](https://nodejs.org/en) and [git](https://git-scm.com/downloads) installed on your computer in order to follow the steps bellow.  
+To begin, launch a terminal at the desired folder location where you intend to clone the repository and run the commands:  
 ```
-git clone https://github.com/Lukas-SE/Meu-time
-cd Meu-time
-npm install
-```
-Now that the repository is cloned and the modules are installed, run the app by typing:
-```
+git clone https://github.com/Lukas-SE/MyTeam.git
+cd MyTeam
+npm i
 npm run dev
 ```
-It will run vite and start the application in a port. Vite will display the localhost link, just click it and done!
 
-## contact :e-mail:
-lukas8pr@gmail.com
+It will run the app in development mode.<br/>

@@ -1,6 +1,6 @@
-import KeyForm from "../../components/keyForm/KeyForm";
-import Logo from "../../components/logo/Logo";
-import VerticalBanner from "../../components/verticalBanner/VerticalBanner";
+import KeyForm from "../../components/keyForm";
+import Logo from "../../components/logo";
+import VerticalBanner from "./verticalBanner";
 import { useAuth } from "../../contexts/auth";
 import { useState } from "react";
 
@@ -46,9 +46,9 @@ export default function Login() {
             <div className="pb-20 font-space text-light-700 cursor-default">
               <p>
                 Não possúi uma API key?{" "}
-                <span className="cursor-pointer font-bold underline">
-                  Saiba como
-                </span>
+                <a target="_blank" rel="noopener noreferrer" href="https://dashboard.api-football.com/login" className="font-bold underline">
+                  Criar conta
+                </a>
               </p>
             </div>
           </div>

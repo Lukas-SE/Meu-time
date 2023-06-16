@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import GraphContainer from "../graphContainer/GraphContainer";
-import PlayerScroller from "../playerScroller/PlayerScroller";
-import TeamData from "../teamData/TeamData";
-import { useAuth } from "../../contexts/auth";
-import { useTeam } from "../../services/meu-time";
+import GraphContainer from "../graphContainer";
+import PlayerScroller from "../playerScroller";
+import TeamData from "../teamData";
+import { useAuth } from "../../../contexts/auth";
+import { useTeam } from "../../../services/meu-time";
 
 interface IUser {
   team: {
@@ -44,7 +44,6 @@ export default function Dashboard() {
         season: (user as IUser).team.Temporada,
         team: (user as IUser).team.Time,
       });
-      console.log(statistics);
       setDashboardData(statistics);
     }
     if(localStorage.getItem("myTeam")) {

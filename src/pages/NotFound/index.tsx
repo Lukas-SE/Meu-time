@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import ButtonText from "../../components/ButtonText/ButtonText";
+import ButtonText from "../../components/ButtonText";
 
 export default function NotFound() {
   const autoRedirect = useNavigate();

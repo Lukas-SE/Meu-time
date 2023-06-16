@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Logo from "../logo/Logo";
+import Logo from "../logo";
 import { useAuth } from "../../contexts/auth";
 
 interface IUses {
